@@ -298,7 +298,7 @@ export default function FileContentEditor() {
                   </h1>
                 </div>
                 <p className="text-md text-gray-600 max-w-xl mx-auto">
-                  Upload your data.ts file, use the UI to edit the content, and download the updated version.
+                  Upload your data.ts file and see it converted into clear, editable fields. Make some changes and download an updated file.
                 </p>
               </div>
               <Card>
