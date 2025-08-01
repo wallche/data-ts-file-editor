@@ -291,7 +291,7 @@ export default function FileContentEditor() {
           <div className="flex-1 flex items-center justify-center p-6">
             <div className="w-full max-w-2xl">
               <div className="text-center mb-8">
-                <div className="flex items-center justify-center gap-3 mb-4">
+                <div className="flex items-center justify-center gap-3 mb-6">
                   <FileText className="h-10 w-10 text-blue-500" />
                   <h1 className="text-5xl font-bold bg-gradient-to-tr from-blue-500 to-violet-800 bg-clip-text text-transparent">
                     Data.TS Content Editor
