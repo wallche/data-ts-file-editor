@@ -328,7 +328,7 @@ export default function FileContentEditor() {
             <h1 className="text-2xl font-bold text-blue-500 text-center mb-4">
               Why use this?
             </h1>
-            <div className="flex gap-4">
+            <div className="flex justify-around itemsgap-4">
               <div className="bg-white rounded-md p-4 border border-grey-500">
                 <p className="text-sm text-gray-600 max-w-xl mx-auto">
                   reason 1
