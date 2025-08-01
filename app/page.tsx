@@ -324,38 +324,36 @@ export default function FileContentEditor() {
             </div>
           </div>
 
-          <div className="w-full my-6 p-4">
-            <h1 className="text-2xl font-bold text-blue-500 text-center mb-4">
-              Why use this?
-            </h1>
-            <div className="flex justify-around items-center gap-4">
-              <div className="bg-white rounded-md p-8 border border-grey-500 w-lg">
-                <h3 className="text-lg font-bold text-blue-500 text-center p-4">
-                  Visualize and edit with ease
-                </h3>
-                <p className="text-sm text-gray-600 max-w-xl mx-auto">
-                  reason 1
-                </p>
-              </div>
-              <div className="bg-white rounded-md p-4 border border-grey-500 w-lg">
-                <h3 className="text-lg font-bold text-blue-500 text-center p-4">
-                  Keep your code intact
-                </h3>              
-                <p className="text-sm text-gray-600 max-w-xl mx-auto">
-                  reason 2
-                </p>
-              </div>
-              <div className="bg-white rounded-md p-4 border border-grey-500 w-lg">
-                <h3 className="text-lg font-bold text-blue-500 text-center p-4">
-                 No setup, no infrastructure
-                </h3>             
-                <p className="text-sm text-gray-600 max-w-xl mx-auto">
-                  reason 3
-                </p>
+          {/* Features Section */}
+          <div className="grid md:grid-cols-2 gap-12">
+            {/* Why You'll Love It */}
+            <div className="animate-fade-in">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                <span className="text-3xl">💖</span>
+                Why You'll Love It:
+              </h2>
+              <div className="space-y-4">
+                {[
+                  { icon: "🌱", title: "Beginner-friendly", desc: "Perfect for newcomers to coding who want to edit .ts files confidently." },
+                  { icon: "👁️", title: "Visualize and edit with ease", desc: "Interactive form and spreadsheet-like UI that represents your data clearly." },
+                  { icon: "🔒", title: "Keep your code intact", desc: "Preserve comments, formatting, and order for smooth collaboration with developers." },
+                  { icon: "⚡", title: "No setup, no infrastructure", desc: "Just upload, edit, and download — no CMS or database needed." },
+                  { icon: "🏗️", title: "Supports complex data", desc: "Works with nested objects, arrays, and typical TypeScript data structures." }
+                ].map((feature, index) => (
+                  <div 
+                    key={index} 
+                    className="flex gap-4 p-4 rounded-lg bg-white/50 backdrop-blur-sm border border-gray-200 hover-scale"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
+                    <span className="text-2xl flex-shrink-0">{feature.icon}</span>
+                    <div>
+                      <h3 className="font-semibold text-gray-900 mb-1">{feature.title}</h3>
+                      <p className="text-gray-600 text-sm">{feature.desc}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
-
-          </div>
 
           <footer className="py-8 border-t border-gray-200 bg-gray-50/50">
             <div className="container mx-auto max-w-6xl px-6">
