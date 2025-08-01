@@ -329,17 +329,17 @@ export default function FileContentEditor() {
               Why use this?
             </h1>
             <div className="flex justify-around items-center gap-4">
-              <div className="bg-white rounded-md p-4 border border-grey-500">
+              <div className="bg-white rounded-md p-8 border border-grey-500 max-w-md">
                 <p className="text-sm text-gray-600 max-w-xl mx-auto">
                   reason 1
                 </p>
               </div>
-              <div className="bg-white rounded-md p-4 border border-grey-500">
+              <div className="bg-white rounded-md p-4 border border-grey-500 max-w-md">
                 <p className="text-sm text-gray-600 max-w-xl mx-auto">
                   reason 2
                 </p>
               </div>
-              <div className="bg-white rounded-md p-4 border border-grey-500">
+              <div className="bg-white rounded-md p-4 border border-grey-500 max-w-md">
                 <p className="text-sm text-gray-600 max-w-xl mx-auto">
                   reason 3
                 </p>
