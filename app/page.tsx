@@ -335,7 +335,7 @@ export default function FileContentEditor() {
                   { icon: "👁️", title: "Visualize and edit with ease", desc: "Interactive form UI that represents your data clearly" },
                   { icon: "🔒", title: "Keep your code intact", desc: "Preserve formatting and order for smooth collaboration with developers" },
                   { icon: "⚡", title: "No setup, no infrastructure", desc: "Just upload, edit, and download — no CMS or database needed" },
-                 {\* { icon: "🏗️", title: "Supports complex data", desc: "Works with nested objects, arrays, and typical TypeScript data structures." } *\}
+                 {/* { icon: "🏗️", title: "Supports complex data", desc: "Works with nested objects, arrays, and typical TypeScript data structures." } */}
                 ].map((feature, index) => (
                   <div 
                     key={index} 
