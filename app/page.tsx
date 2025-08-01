@@ -337,12 +337,12 @@ export default function FileContentEditor() {
                 ].map((feature, index) => (
                   <div 
                     key={index} 
-                    className="p-4 rounded-lg bg-white/50 backdrop-blur-sm border border-gray-200 text-center"
+                    className="p-4 rounded-lg bg-white/50 backdrop-blur-sm border border-gray-300 text-center"
                     style={{ animationDelay: `${index * 100}ms` }}
                   >
                     <span className="text-2xl flex-shrink-0">{feature.icon}</span>
                     <div>
-                      <h3 className="font-semibold text-gray-900 mb-1">{feature.title}</h3>
+                      <h3 className="font-semibold text-blue-800 mb-1">{feature.title}</h3>
                       <p className="text-gray-600 text-sm">{feature.desc}</p>
                     </div>
                   </div>
