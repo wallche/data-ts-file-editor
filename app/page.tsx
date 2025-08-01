@@ -323,6 +323,31 @@ export default function FileContentEditor() {
               </Card>
             </div>
           </div>
+
+          <div className="w-full">
+            <h1 className="text-2xl font-bold blue-500">
+              Why use this?
+            </h1>
+            <div className="flex gap-4">
+              <div>
+                <p className="text-sm text-gray-600 max-w-xl mx-auto">
+                  reason 1
+                </p>
+              </div>
+              <div>
+                <p className="text-sm text-gray-600 max-w-xl mx-auto">
+                  reason 2
+                </p>
+              </div>
+              <div>
+                <p className="text-sm text-gray-600 max-w-xl mx-auto">
+                  reason 3
+                </p>
+              </div>
+            </div>
+
+          </div>
+
           <footer className="py-8 border-t border-gray-200 bg-gray-50/50">
             <div className="container mx-auto max-w-6xl px-6">
               <p className="text-sm text-gray-600 leading-relaxed">
