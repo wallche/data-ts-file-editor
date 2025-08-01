@@ -325,7 +325,7 @@ export default function FileContentEditor() {
           </div>
 
 
-            <div className="animate-fade-in max-w-4xl items-center">
+            <div className="animate-fade-in max-w-4xl items-center my-auto">
               <h2 className="text-2xl font-bold text-blue-500 mb-6 flex items-center justify-center gap-3">
                 Why you'll like this:
               </h2>
