@@ -329,17 +329,26 @@ export default function FileContentEditor() {
               Why use this?
             </h1>
             <div className="flex justify-around items-center gap-4">
-              <div className="bg-white rounded-md p-8 border border-grey-500 max-w-md">
+              <div className="bg-white rounded-md p-8 border border-grey-500 max-w-lg">
+                <h3 className="text-lg font-bold text-blue-500 text-center p-4">
+                  Visualize and edit with ease
+                </h3>
                 <p className="text-sm text-gray-600 max-w-xl mx-auto">
                   reason 1
                 </p>
               </div>
-              <div className="bg-white rounded-md p-4 border border-grey-500 max-w-md">
+              <div className="bg-white rounded-md p-4 border border-grey-500 max-w-lg">
+                <h3 className="text-lg font-bold text-blue-500 text-center p-4">
+                  Keep your code intact
+                </h3>              
                 <p className="text-sm text-gray-600 max-w-xl mx-auto">
                   reason 2
                 </p>
               </div>
-              <div className="bg-white rounded-md p-4 border border-grey-500 max-w-md">
+              <div className="bg-white rounded-md p-4 border border-grey-500 max-w-lg">
+                <h3 className="text-lg font-bold text-blue-500 text-center p-4">
+                 No setup, no infrastructure
+                </h3>             
                 <p className="text-sm text-gray-600 max-w-xl mx-auto">
                   reason 3
                 </p>
