@@ -331,11 +331,9 @@ export default function FileContentEditor() {
               </h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {[
-                  { icon: "🌱", title: "Beginner-friendly", desc: "Perfect for newcomers to coding who want to edit .ts files confidently." },
                   { icon: "👁️", title: "Visualize and edit with ease", desc: "Interactive form UI that represents your data clearly" },
                   { icon: "🔒", title: "Keep your code intact", desc: "Preserve formatting and order for smooth collaboration with developers" },
                   { icon: "⚡", title: "No setup, no infrastructure", desc: "Just upload, edit, and download — no CMS or database needed" },
-                 {/* { icon: "🏗️", title: "Supports complex data", desc: "Works with nested objects, arrays, and typical TypeScript data structures." } */}
                 ].map((feature, index) => (
                   <div 
                     key={index} 
