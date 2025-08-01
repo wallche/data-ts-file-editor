@@ -287,8 +287,8 @@ export default function FileContentEditor() {
   if (!isLoaded)
     return (
       <>
-        <div className="min-h-screen flex flex-col bg-gradient-to-br from-slate-50 to-blue-50">
-          <div className="flex-1 flex items-center justify-center p-6">
+        <div className="flex flex-col bg-gradient-to-br from-slate-50 to-blue-50">
+          <div className="min-h-screen flex-1 flex items-center justify-center p-6">
             <div className="w-full max-w-2xl">
               <div className="text-center mb-8">
                 <div className="flex items-center justify-center gap-3 mb-6">
