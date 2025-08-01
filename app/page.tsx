@@ -324,11 +324,10 @@ export default function FileContentEditor() {
             </div>
           </div>
 
-            {/* Why You'll Love It Section */}
+
             <div className="animate-fade-in">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center justify-center gap-3">
-                <span className="text-3xl">💖</span>
-                Why You'll Love It:
+              <h2 className="text-2xl font-bold text-blue-500 mb-6 flex items-center justify-center gap-3">
+                Why you'll like this:
               </h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {[
