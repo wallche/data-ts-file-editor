@@ -297,7 +297,7 @@ export default function FileContentEditor() {
                     Data.TS Content Editor
                   </h1>
                 </div>
-                <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                <p className="text-md text-gray-600 max-w-2xl mx-auto">
                   Upload your data.ts file, use the UI to edit the content, and download the updated version.
                 </p>
               </div>
