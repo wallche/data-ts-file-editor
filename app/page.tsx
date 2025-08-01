@@ -324,7 +324,7 @@ export default function FileContentEditor() {
             </div>
           </div>
 
-          <div className="w-full">
+          <div className="w-full my-4">
             <h1 className="text-2xl font-bold text-blue-500 text-center mb-4">
               Why use this?
             </h1>
