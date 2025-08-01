@@ -325,7 +325,7 @@ export default function FileContentEditor() {
           </div>
 
 
-            <div className="max-w-4xl my-4">
+            <div className="max-w-4xl mx-auto">
               <h2 className="text-2xl font-bold text-blue-500 mb-6 flex items-center justify-center gap-3">
                 Why you'll like this:
               </h2>
