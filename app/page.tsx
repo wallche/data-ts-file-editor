@@ -325,21 +325,21 @@ export default function FileContentEditor() {
           </div>
 
           <div className="w-full">
-            <h1 className="text-2xl font-bold blue-500">
+            <h1 className="text-2xl font-bold text-blue-500 text-center mb-4">
               Why use this?
             </h1>
             <div className="flex gap-4">
-              <div>
+              <div className="bg-white rounded-md p-4 border border-grey-500">
                 <p className="text-sm text-gray-600 max-w-xl mx-auto">
                   reason 1
                 </p>
               </div>
-              <div>
+              <div className="bg-white rounded-md p-4 border border-grey-500">
                 <p className="text-sm text-gray-600 max-w-xl mx-auto">
                   reason 2
                 </p>
               </div>
-              <div>
+              <div className="bg-white rounded-md p-4 border border-grey-500">
                 <p className="text-sm text-gray-600 max-w-xl mx-auto">
                   reason 3
                 </p>
