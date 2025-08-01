@@ -339,7 +339,7 @@ export default function FileContentEditor() {
                 ].map((feature, index) => (
                   <div 
                     key={index} 
-                    className="flex gap-4 p-4 rounded-lg bg-white/50 backdrop-blur-sm border border-gray-200 hover-scale"
+                    className="p-4 rounded-lg bg-white/50 backdrop-blur-sm border border-gray-200 hover-scale"
                     style={{ animationDelay: `${index * 100}ms` }}
                   >
                     <span className="text-2xl flex-shrink-0">{feature.icon}</span>
