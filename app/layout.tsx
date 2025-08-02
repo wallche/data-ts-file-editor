@@ -4,8 +4,8 @@ import { GeistMono } from 'geist/font/mono'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
+  title: 'Data.ts File Editor',
+  description: 'Created with v0, idea and prompts by Milena Pacherazova - UX/UI Designer with some coding skills',
   generator: 'v0.dev',
 }
 
@@ -25,7 +25,19 @@ html {
 }
         `}</style>
       </head>
-      <body className="bg-gradient-to-br from-slate-50 to-blue-50">{children}</body>
+      <body className="bg-gradient-to-br from-slate-50 to-blue-50">{children}
+        <script type="text/javascript">
+          (function(l,e,a,p) {
+            if (window.Sprig) return;
+            window.Sprig = function(){S._queue.push(arguments)}
+            var S = window.Sprig;S.appId = a;S._queue = [];window.UserLeap=S;
+            a=l.createElement('script');
+            a.async=1;a.src=e+'?id='+S.appId;
+            p=l.getElementsByTagName('script')[0];
+            p.parentNode.insertBefore(a, p);
+          })(document, 'https://cdn.sprig.com/shim.js', 'R69zSijMMoql');
+        </script>
+      </body>
     </html>
   )
 }
