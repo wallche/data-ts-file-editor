@@ -287,18 +287,18 @@ export default function FileContentEditor() {
   if (!isLoaded)
     return (
       <>
-        <div className="min-h-screen flex flex-col bg-gradient-to-br from-slate-50 to-blue-50">
-          <div className="flex-1 flex items-center justify-center p-6">
+        <div className="flex flex-col bg-gradient-to-br from-slate-50 to-blue-50">
+          <div className="min-h-screen flex-1 flex items-center justify-center p-6">
             <div className="w-full max-w-2xl">
               <div className="text-center mb-8">
-                <div className="flex items-center justify-center gap-3 mb-4">
-                  <FileText className="h-8 w-8 text-blue-500" />
-                  <h1 className="text-4xl font-bold bg-gradient-to-tr from-blue-500 to-violet-800 bg-clip-text text-transparent">
+                <div className="flex items-center justify-center gap-3 mb-6">
+                  <FileText className="h-10 w-10 text-blue-500" />
+                  <h1 className="text-5xl font-bold bg-gradient-to-tr from-blue-500 to-violet-800 bg-clip-text text-transparent">
                     Data.TS Content Editor
                   </h1>
                 </div>
-                <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                  Upload your data.ts file, use the UI to edit the content, and download the updated version.
+                <p className="text-md text-gray-600 max-w-xl mx-auto">
+                  Upload your data.ts file and see it converted into clear, editable fields. Make some changes and download an updated file.
                 </p>
               </div>
               <Card>
@@ -323,6 +323,33 @@ export default function FileContentEditor() {
               </Card>
             </div>
           </div>
+
+
+            <div className="max-w-4xl mx-auto mb-8 p-6">
+              <h2 className="text-2xl font-bold text-blue-500 mb-6 flex items-center justify-center gap-3">
+                Why you'll like this
+              </h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {[
+                  { icon: "👁️", title: "Visualize and edit with ease", desc: "Interactive form UI that represents your data clearly" },
+                  { icon: "🔒", title: "Keep your code intact", desc: "Preserve formatting and order for smooth collaboration with developers" },
+                  { icon: "⚡", title: "No setup, no infrastructure", desc: "Just upload, edit, and download — no CMS or database needed" },
+                ].map((feature, index) => (
+                  <div 
+                    key={index} 
+                    className="p-4 rounded-lg bg-white/50 backdrop-blur-sm border border-gray-300 text-center"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
+                    <span className="text-2xl flex-shrink-0">{feature.icon}</span>
+                    <div>
+                      <h3 className="font-semibold text-blue-800 mb-1">{feature.title}</h3>
+                      <p className="text-gray-600 text-sm">{feature.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
           <footer className="py-8 border-t border-gray-200 bg-gray-50/50">
             <div className="container mx-auto max-w-6xl px-6">
               <p className="text-sm text-gray-600 leading-relaxed">
