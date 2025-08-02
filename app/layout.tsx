@@ -25,7 +25,23 @@ html {
 }
         `}</style>
       </head>
-      <body className="bg-gradient-to-br from-slate-50 to-blue-50">{children}</body>
+      <body className="bg-gradient-to-br from-slate-50 to-blue-50">{children}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(l,e,a,p) {
+                if (window.Sprig) return;
+                window.Sprig = function(){S._queue.push(arguments)}
+                var S = window.Sprig;S.appId = a;S._queue = [];window.UserLeap=S;
+                var script = l.createElement('script');
+                script.async=1;script.src=e+'?id='+S.appId;
+                p=l.getElementsByTagName('script')[0];
+                p.parentNode.insertBefore(script, p);
+              })(document, 'https://cdn.sprig.com/shim.js', 'R69zSijMMoql');
+            `
+          }}
+        />
+      </body>
     </html>
   )
 }
