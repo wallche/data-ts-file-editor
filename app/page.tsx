@@ -373,8 +373,8 @@ export default function FileContentEditor() {
     )
 
   return (
-    <>
-      <div className="container mx-auto max-w-6xl space-y-4 bg-gradient-to-br from-slate-50 to-blue-50">
+    < className="bg-gradient-to-br from-slate-50 to-blue-50">
+      <div className="container mx-auto max-w-6xl space-y-4">
         <Card className="border-none bg-transparent">
           <CardHeader className="flex flex-wrap justify-between gap-4">
             <div className="flex flex-wrap justify-between items-center gap-4">
