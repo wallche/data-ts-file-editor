@@ -287,7 +287,7 @@ export default function FileContentEditor() {
   if (!isLoaded)
     return (
       <>
-        <div className="flex flex-col bg-gradient-to-br from-slate-50 to-blue-50">
+        <div className="flex flex-col">
           <div className="min-h-screen flex-1 flex items-center justify-center p-6">
             <div className="w-full max-w-2xl">
               <div className="text-center mb-8">
@@ -374,7 +374,7 @@ export default function FileContentEditor() {
 
   return (
     <>
-      <div className="container mx-auto max-w-6xl space-y-4 bg-gradient-to-br from-slate-50 to-blue-50">
+      <div className="container mx-auto max-w-6xl space-y-4">
         <Card className="border-none bg-transparent">
           <CardHeader className="flex flex-wrap justify-between gap-4">
             <div className="flex flex-wrap justify-between items-center gap-4">
