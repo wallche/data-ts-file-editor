@@ -356,16 +356,17 @@ export default function FileContentEditor() {
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
-                { title: "Developers", desc: "who prefer to have visuals(?)" },
-                { title: "Beginner Developers", desc: "who are less confortable with code syntax" },
-                { title: "Non-developers", desc: "who want to edit static websites' content occasionally" },
-                { title: "Anyone else", desc: "who have an idea what this tool is about" },
+                { icon: "😎", title: "Developers", desc: "who prefer to have visuals(?)" },
+                { icon: "😬", title: "Beginner Developers", desc: "who are less confortable with code syntax" },
+                { icon: "🥹", title: "Non-developers", desc: "who want to edit static websites' content occasionally" },
+                { icon: "🥲", title: "Anyone else", desc: "who have an idea what this tool is about" },
               ].map((feature, index) => (
                 <div 
                   key={index} 
                   className="p-4 text-center"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
+                <span className="text-2xl flex-shrink-0">{feature.icon}</span>
                   <div>
                     <h3 className="font-semibold text-blue-800 mb-1">{feature.title}</h3>
                     <p className="text-gray-600 text-base">{feature.desc}</p>
