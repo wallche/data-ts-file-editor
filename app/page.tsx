@@ -363,7 +363,7 @@ export default function FileContentEditor() {
               ].map((feature, index) => (
                 <div 
                   key={index} 
-                  className="p-4 border-b border-gray-300 text-left"
+                  className="p-4 text-left"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <div>
