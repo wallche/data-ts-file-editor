@@ -445,8 +445,8 @@ export default function FileContentEditor() {
                 key={idx}
                 ref={(el) => (itemRefs.current[idx] = el)}
               >
-                <CardHeader className="flex flex-row items-center justify-between shadow-none p-3 space-y-0 bg-blue-50 rounded-t-md">
-                  <span className="text-sm">Item {idx + 1}</span>
+                <CardHeader className="flex flex-row items-center justify-between shadow-none p-3 space-y-0 bg-gray-100 rounded-t-md">
+                  <span className="text-sm font-medium">Item {idx + 1}</span>
                   <Button
                     size="sm"
                     variant="ghost"
