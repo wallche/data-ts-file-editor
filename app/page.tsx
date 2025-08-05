@@ -376,7 +376,7 @@ export default function FileContentEditor() {
             </div>
           </div>
 
-          <footer className="py-8 border-t border-gray-200 bg-gray-50/50">
+          <footer className="py-8 border-t border-dashed border-gray-200">
             <div className="container mx-auto max-w-6xl px-6">
               <p className="text-sm text-gray-600 leading-relaxed">
                 Build with{" "}
