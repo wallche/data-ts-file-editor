@@ -354,7 +354,7 @@ export default function FileContentEditor() {
             <h2 className="text-2xl font-bold text-blue-500 mb-6 flex items-center justify-center gap-3">
               Who is it for?
             </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid gap-6">
               {[
                 { title: "Visualize and edit with ease", desc: "Interactive form UI that represents your data clearly" },
                 { title: "Keep your code intact", desc: "Preserve formatting and order for smooth collaboration with developers" },
