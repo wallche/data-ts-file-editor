@@ -342,7 +342,7 @@ export default function FileContentEditor() {
                 >
                   <span className="text-2xl flex-shrink-0">{feature.icon}</span>
                   <div>
-                    <h3 className="font-semibold text-violet-800 mb-1">{feature.title}</h3>
+                    <h3 className="font-semibold text-blue-800 mb-1">{feature.title}</h3>
                     <p className="text-gray-600 text-base">{feature.desc}</p>
                   </div>
                 </div>
@@ -367,7 +367,7 @@ export default function FileContentEditor() {
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <div>
-                    <h3 className="font-semibold text-violet-800 mb-1">{feature.title}</h3>
+                    <h3 className="font-semibold text-blue-800 mb-1">{feature.title}</h3>
                     <p className="text-gray-600 text-base">{feature.desc}</p>
                   </div>
                 </div>
