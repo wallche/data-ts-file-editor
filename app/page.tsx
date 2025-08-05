@@ -477,9 +477,9 @@ export default function FileContentEditor() {
           </Alert>
         )}
       </div>
-      <footer className="py-8 border-t border-gray-200 bg-gray-50/50">
+      <footer className="py-8 border-t border-dashed border-gray-300">
         <div className="container mx-auto max-w-6xl px-6">
-          <p className="text-sm text-gray-600 leading-relaxed">
+          <p className="text-sm text-gray-600 text-center">
             Build with{" "}
             <a
               href="https://v0.dev"
