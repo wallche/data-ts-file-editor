@@ -325,30 +325,54 @@ export default function FileContentEditor() {
           </div>
 
 
-            <div className="max-w-4xl mx-auto mb-8 p-6">
-              <h2 className="text-2xl font-bold text-blue-500 mb-6 flex items-center justify-center gap-3">
-                Why you'll like this
-              </h2>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {[
-                  { icon: "👁️", title: "Visualize and edit with ease", desc: "Interactive form UI that represents your data clearly" },
-                  { icon: "🔒", title: "Keep your code intact", desc: "Preserve formatting and order for smooth collaboration with developers" },
-                  { icon: "⚡", title: "No setup, no infrastructure", desc: "Just upload, edit, and download — no CMS or database needed" },
-                ].map((feature, index) => (
-                  <div 
-                    key={index} 
-                    className="p-4 rounded-lg bg-white/50 backdrop-blur-sm border border-gray-300 text-center"
-                    style={{ animationDelay: `${index * 100}ms` }}
-                  >
-                    <span className="text-2xl flex-shrink-0">{feature.icon}</span>
-                    <div>
-                      <h3 className="font-semibold text-blue-800 mb-1">{feature.title}</h3>
-                      <p className="text-gray-600 text-sm">{feature.desc}</p>
-                    </div>
+          <div className="max-w-4xl mx-auto mb-8 p-6">
+            <h2 className="text-2xl font-bold text-blue-500 mb-6 flex items-center justify-center gap-3">
+              Why you'll like this
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                { icon: "👁️", title: "Visualize and edit with ease", desc: "Interactive form UI that represents your data clearly" },
+                { icon: "🔒", title: "Keep your code intact", desc: "Preserve formatting and order for smooth collaboration with developers" },
+                { icon: "⚡", title: "No setup, no infrastructure", desc: "Just upload, edit, and download — no CMS or database needed" },
+              ].map((feature, index) => (
+                <div 
+                  key={index} 
+                  className="p-4 rounded-lg bg-white/50 backdrop-blur-sm border border-gray-300 text-center"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  <span className="text-2xl flex-shrink-0">{feature.icon}</span>
+                  <div>
+                    <h3 className="font-semibold text-blue-800 mb-1">{feature.title}</h3>
+                    <p className="text-gray-600 text-sm">{feature.desc}</p>
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
+          </div>
+
+          <div className="max-w-4xl mx-auto mb-8 p-6">
+            <h2 className="text-2xl font-bold text-blue-500 mb-6 flex items-center justify-center gap-3">
+              Who is it for?
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                { title: "Visualize and edit with ease", desc: "Interactive form UI that represents your data clearly" },
+                { title: "Keep your code intact", desc: "Preserve formatting and order for smooth collaboration with developers" },
+                { title: "No setup, no infrastructure", desc: "Just upload, edit, and download — no CMS or database needed" },
+              ].map((feature, index) => (
+                <div 
+                  key={index} 
+                  className="p-4 rounded-lg bg-white/50 backdrop-blur-sm border border-gray-300 text-center"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  <div>
+                    <h3 className="font-semibold text-blue-800 mb-1">{feature.title}</h3>
+                    <p className="text-gray-600 text-sm">{feature.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
 
           <footer className="py-8 border-t border-gray-200 bg-gray-50/50">
             <div className="container mx-auto max-w-6xl px-6">
