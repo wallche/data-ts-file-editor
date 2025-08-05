@@ -337,7 +337,7 @@ export default function FileContentEditor() {
               ].map((feature, index) => (
                 <div 
                   key={index} 
-                  className="p-4 rounded-lg bg-white/50 border border-gray-300 text-center"
+                  className="p-4 text-center"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <span className="text-2xl flex-shrink-0">{feature.icon}</span>
