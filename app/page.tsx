@@ -354,7 +354,7 @@ export default function FileContentEditor() {
             <h2 className="text-2xl font-bold text-blue-500 mb-6 flex items-center justify-center gap-3">
               Who is it for?
             </h2>
-            <div className="grid gap-2 divide-x-3 divide-dashed divide-indigo-500">
+            <div className="grid gap-6">
               {[
                 { title: "Developers", desc: "who prefer to have visuals(?)" },
                 { title: "Beginner Developers", desc: "who are less confortable with code syntax" },
@@ -363,7 +363,7 @@ export default function FileContentEditor() {
               ].map((feature, index) => (
                 <div 
                   key={index} 
-                  className="p-4 text-left"
+                  className="p-4 border-b border-gray-300 text-left"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <div>
