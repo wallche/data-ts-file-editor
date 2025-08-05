@@ -353,18 +353,25 @@ export default function FileContentEditor() {
           <footer className="py-8 border-t border-gray-200 bg-gray-50/50">
             <div className="container mx-auto max-w-6xl px-6">
               <p className="text-sm text-gray-600 leading-relaxed">
-                This is one of my personal projects build with{" "}
+                Build with{" "}
                 <a
                   href="https://v0.dev"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-600 hover:text-blue-800 underline transition-colors"
                 >
-                  v0
+                 v0
                 </a>{" "}
-                . The styling is slightly touched manually with tailwind classes. Some things
-                may not work but it is what it is... I'm just an amateur and this an experiment. Suggestions and improvements are
-                welcome → use the feedback form on the right edge of the screen. Thanks!
+                , by{" "}
+                <a
+                  href="https://www.linkedin.com/in/milenapacherazova/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:text-blue-800 underline transition-colors"
+                >
+                 Milena P.
+                </a>{" "}              
+                 and styled with tailwind classes. Some things may not work but it is what it is... I'm just an amateur and this an experiment. Suggestions and improvements are welcome → use the feedback form on the right edge of the screen. Thanks!
               </p>
             </div>
           </footer>
@@ -444,10 +451,10 @@ export default function FileContentEditor() {
           </Alert>
         )}
       </div>
-      <footer className="py-8 border-t border-dashed border-gray-200 bg-transparent">
+      <footer className="py-8 border-t border-gray-200 bg-gray-50/50">
         <div className="container mx-auto max-w-6xl px-6">
           <p className="text-sm text-gray-600 leading-relaxed">
-            This is one of my personal projects build with{" "}
+            Build with{" "}
             <a
               href="https://v0.dev"
               target="_blank"
@@ -456,9 +463,16 @@ export default function FileContentEditor() {
             >
               v0
             </a>{" "}
-            . The styling is slightly touched manually with tailwind classes. Some things
-            may not work but it is what it is... I'm just an amateur and this an experiment. Suggestions and improvements are
-            welcome → use the feedback form on the right edge of the screen. Thanks!
+            , by{" "}
+            <a
+              href="https://www.linkedin.com/in/milenapacherazova/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:text-blue-800 underline transition-colors"
+            >
+              Milena P.
+            </a>{" "}              
+              and styled with tailwind classes. Some things may not work but it is what it is... I'm just an amateur and this an experiment. Suggestions and improvements are welcome → use the feedback form on the right edge of the screen. Thanks!
           </p>
         </div>
       </footer>
