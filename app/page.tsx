@@ -356,9 +356,10 @@ export default function FileContentEditor() {
             </h2>
             <div className="grid gap-6">
               {[
-                { title: "Visualize and edit with ease", desc: "Interactive form UI that represents your data clearly" },
-                { title: "Keep your code intact", desc: "Preserve formatting and order for smooth collaboration with developers" },
-                { title: "No setup, no infrastructure", desc: "Just upload, edit, and download — no CMS or database needed" },
+                { title: "Developers", desc: "who prefer to have visuals(?)" },
+                { title: "Beginner Developers", desc: "who are less confortable with code syntax" },
+                { title: "Non-developers", desc: "who want to edit static websites' content occasionally" },
+                { title: "Anyone else", desc: "who have an idea what this tool is about" },
               ].map((feature, index) => (
                 <div 
                   key={index} 
