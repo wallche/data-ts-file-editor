@@ -325,46 +325,79 @@ export default function FileContentEditor() {
           </div>
 
 
-            <div className="max-w-4xl mx-auto mb-8 p-6">
-              <h2 className="text-2xl font-bold text-blue-500 mb-6 flex items-center justify-center gap-3">
-                Why you'll like this
-              </h2>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {[
-                  { icon: "👁️", title: "Visualize and edit with ease", desc: "Interactive form UI that represents your data clearly" },
-                  { icon: "🔒", title: "Keep your code intact", desc: "Preserve formatting and order for smooth collaboration with developers" },
-                  { icon: "⚡", title: "No setup, no infrastructure", desc: "Just upload, edit, and download — no CMS or database needed" },
-                ].map((feature, index) => (
-                  <div 
-                    key={index} 
-                    className="p-4 rounded-lg bg-white/50 backdrop-blur-sm border border-gray-300 text-center"
-                    style={{ animationDelay: `${index * 100}ms` }}
-                  >
-                    <span className="text-2xl flex-shrink-0">{feature.icon}</span>
-                    <div>
-                      <h3 className="font-semibold text-blue-800 mb-1">{feature.title}</h3>
-                      <p className="text-gray-600 text-sm">{feature.desc}</p>
-                    </div>
+          <div className="max-w-4xl mx-auto mb-8 p-6">
+            <h2 className="text-2xl font-bold text-blue-500 mb-6 flex items-center justify-center gap-3">
+              Why you'll like this
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                { icon: "👁️", title: "Visualize and edit with ease", desc: "Interactive form UI that represents your data clearly" },
+                { icon: "🔒", title: "Keep your code intact", desc: "Preserve formatting and order for smooth collaboration with developers" },
+                { icon: "⚡", title: "No setup, no infrastructure", desc: "Just upload, edit, and download — no CMS or database needed" },
+              ].map((feature, index) => (
+                <div 
+                  key={index} 
+                  className="p-4 text-center"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  <span className="text-2xl flex-shrink-0">{feature.icon}</span>
+                  <div>
+                    <h3 className="font-semibold text-blue-800 mb-1">{feature.title}</h3>
+                    <p className="text-gray-600 text-base">{feature.desc}</p>
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
+          </div>
 
-          <footer className="py-8 border-t border-gray-200 bg-gray-50/50">
+          <div className="max-w-4xl mx-auto mb-8 p-6">
+            <h2 className="text-2xl font-bold text-blue-500 mb-6 flex items-center justify-center gap-3">
+              Who is it for?
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                { icon: "😎", title: "Developers", desc: "who prefer to have visuals(?)" },
+                { icon: "😬", title: "Beginner Developers", desc: "who are less confortable with code syntax" },
+                { icon: "🥹", title: "Non-developers", desc: "who want to edit static websites' content occasionally" },
+                { icon: "🥲", title: "Anyone else", desc: "who have an idea what this tool is about" },
+              ].map((feature, index) => (
+                <div 
+                  key={index} 
+                  className="p-4 text-center"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                <span className="text-2xl flex-shrink-0">{feature.icon}</span>
+                  <div>
+                    <h3 className="font-semibold text-blue-800 mb-1">{feature.title}</h3>
+                    <p className="text-gray-600 text-base">{feature.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <footer className="py-8 border-t border-dashed border-gray-300">
             <div className="container mx-auto max-w-6xl px-6">
-              <p className="text-sm text-gray-600 leading-relaxed">
-                This is one of my personal projects build with{" "}
+              <p className="text-sm text-gray-600 text-center">
+                Build with{" "}
                 <a
                   href="https://v0.dev"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-600 hover:text-blue-800 underline transition-colors"
                 >
-                  v0
+                 v0
                 </a>{" "}
-                . The styling is slightly touched manually with tailwind classes. Some things
-                may not work but it is what it is... I'm just an amateur and this an experiment. Suggestions and improvements are
-                welcome → use the feedback form on the right edge of the screen. Thanks!
+                , by{" "}
+                <a
+                  href="https://www.linkedin.com/in/milenapacherazova/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:text-blue-800 underline transition-colors"
+                >
+                 Milena P.
+                </a>{" "}              
+                 and styled with tailwind classes. Some things may not work but it is what it is... I'm just an amateur and this an experiment. Suggestions and improvements are welcome → use the feedback form on the right edge of the screen. Thanks!
               </p>
             </div>
           </footer>
@@ -375,7 +408,7 @@ export default function FileContentEditor() {
   return (
     <>
       <div className="container mx-auto max-w-6xl space-y-4">
-        <Card className="border-none bg-transparent shadow-none">
+        <Card className="border-none bg-transparent">
           <CardHeader className="flex flex-wrap justify-between gap-4">
             <div className="flex flex-wrap justify-between items-center gap-4">
               <div>
@@ -412,7 +445,7 @@ export default function FileContentEditor() {
                 key={idx}
                 ref={(el) => (itemRefs.current[idx] = el)}
               >
-                <CardHeader className="flex flex-row items-center justify-between shadow-none p-3 space-y-0 bg-gray-200 rounded-t-md">
+                <CardHeader className="flex flex-row items-center justify-between shadow-none p-3 space-y-0 bg-gray-100 rounded-t-md">
                   <span className="text-sm font-medium">Item {idx + 1}</span>
                   <Button
                     size="sm"
@@ -443,11 +476,11 @@ export default function FileContentEditor() {
             <AlertDescription>{error}</AlertDescription>
           </Alert>
         )}
-      </div>
-      <footer className="py-8 border-t border-dashed border-gray-200 bg-transparent">
+
+      <footer className="py-8 border-t border-dashed border-gray-300">
         <div className="container mx-auto max-w-6xl px-6">
-          <p className="text-sm text-gray-600 leading-relaxed">
-            This is one of my personal projects build with{" "}
+          <p className="text-sm text-gray-600 text-center">
+            Build with{" "}
             <a
               href="https://v0.dev"
               target="_blank"
@@ -456,12 +489,22 @@ export default function FileContentEditor() {
             >
               v0
             </a>{" "}
-            . The styling is slightly touched manually with tailwind classes. Some things
-            may not work but it is what it is... I'm just an amateur and this an experiment. Suggestions and improvements are
-            welcome → use the feedback form on the right edge of the screen. Thanks!
+            , by{" "}
+            <a
+              href="https://www.linkedin.com/in/milenapacherazova/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:text-blue-800 underline transition-colors"
+            >
+              Milena P.
+            </a>{" "}              
+              and styled with tailwind classes. Some things may not work but it is what it is... I'm just an amateur and this an experiment. Suggestions and improvements are welcome → use the feedback form on the right edge of the screen. Thanks!
           </p>
         </div>
       </footer>
+
+      </div>
+
     </>
   )
 }
