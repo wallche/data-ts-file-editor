@@ -289,7 +289,7 @@ export default function FileContentEditor() {
       <>
         <div className="flex flex-col">
           <div className="min-h-screen flex-1 flex items-center justify-center p-6">
-            <div className="w-full max-w-2xl">
+            <div className="w-full max-w-2xl mb-10">
               <div className="text-center mb-8">
                 <div className="flex items-center justify-center gap-3 mb-6">
                   <FileText className="h-10 w-10 text-blue-500" />
