@@ -13,9 +13,16 @@ import { Textarea } from "@/components/ui/textarea"
 import { Trash2, Plus, Download, Upload, FileText, ChevronRight, Eye, EyeOff } from "lucide-react"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
+import { Switch } from "@/components/ui/switch"
 
 interface DataItem {
   [key: string]: any
+}
+
+/** Data item wrapped with a stable id, so React keys and deletions don't depend on array position */
+interface Row {
+  id: number
+  value: DataItem
 }
 
 /* ---------- UTILITIES ---------- */
@@ -31,28 +38,48 @@ const isImageUrl = (url: string) =>
   typeof url === "string" &&
   (/\.(jpe?g|png|gif|webp|svg|bmp|ico)(\?.*)?$/i.test(url) || url.includes("image") || url.includes("img"))
 
+/** Number input that keeps the committed value a real number.
+ *  While typing, the raw text lives in local draft state; only valid numbers are committed,
+ *  and an empty/invalid field reverts to the last valid number on blur. */
+function NumberField({ value, onCommit }: { value: number; onCommit: (n: number) => void }) {
+  const [draft, setDraft] = useState(String(value))
+  return (
+    <Input
+      type="number"
+      value={draft}
+      onChange={(e) => {
+        setDraft(e.target.value)
+        const n = Number(e.target.value)
+        if (e.target.value.trim() !== "" && !Number.isNaN(n)) onCommit(n)
+      }}
+      onBlur={() => setDraft(String(value))}
+    />
+  )
+}
+
 /* ---------- COMPONENT ---------- */
 
 export default function FileContentEditor() {
   const [originalFileName, setOriginalFileName] = useState("")
   const [exportName, setExportName] = useState("data")
-  const [data, setData] = useState<DataItem[]>([])
+  const [rows, setRows] = useState<Row[]>([])
+  const nextIdRef = useRef(0)
   const [isLoaded, setIsLoaded] = useState(false)
   const [error, setError] = useState("")
-  const [originalImports, setOriginalImports] = useState("")
+  const [originalSource, setOriginalSource] = useState("")
+  const [arrayRange, setArrayRange] = useState<[number, number] | null>(null)
   const [quotedKeys, setQuotedKeys] = useState(false)
   const [showPreviews, setShowPreviews] = useState(true)
   const [newItemIndex, setNewItemIndex] = useState<number | null>(null)
   const itemRefs = useRef<(HTMLDivElement | null)[]>([])
-  const [deletingItems, setDeletingItems] = useState<Set<number>>(new Set())
+  const [deletingIds, setDeletingIds] = useState<Set<number>>(new Set())
 
   /* -------- PARSER (AST–based) -------- */
 
   const parseDataFile = useCallback((source: string) => {
     try {
-      /* retain import lines so we can rewrite them later */
-      const importLines = source.match(/^import\s+.*$/gm) || []
-      setOriginalImports(importLines.join("\n"))
+      /* retain the full source so we can splice the edited array back in */
+      setOriginalSource(source)
 
       /* build AST (handles TS, generics, etc.) */
       const ast = parse(source, {
@@ -62,14 +89,16 @@ export default function FileContentEditor() {
       })
 
       let arraySlice = ""
-      let foundExportName = exportName
+      let foundExportName = "data"
+      let range: [number, number] | null = null
 
       /* scan top-level statements */
       for (const node of ast.program.body) {
         // export default [...]
         if (node.type === "ExportDefaultDeclaration" && node.declaration.type === "ArrayExpression") {
-          arraySlice = source.slice(node.declaration.start!, node.declaration.end!)
-          foundExportName = "defaultExport"
+          range = [node.declaration.start!, node.declaration.end!]
+          arraySlice = source.slice(range[0], range[1])
+          foundExportName = "default"
           break
         }
 
@@ -77,7 +106,8 @@ export default function FileContentEditor() {
         if (node.type === "ExportNamedDeclaration" && node.declaration?.type === "VariableDeclaration") {
           for (const decl of node.declaration.declarations) {
             if (decl.init?.type === "ArrayExpression" && decl.id.type === "Identifier") {
-              arraySlice = source.slice(decl.init.start!, decl.init.end!)
+              range = [decl.init.start!, decl.init.end!]
+              arraySlice = source.slice(range[0], range[1])
               foundExportName = decl.id.name
               break
             }
@@ -87,15 +117,16 @@ export default function FileContentEditor() {
         if (arraySlice) break
       }
 
-      if (!arraySlice) throw new Error("No exported array found.")
+      if (!arraySlice || !range) throw new Error("No exported array found.")
 
       setExportName(foundExportName)
+      setArrayRange(range)
 
       /* -------- try JSON5 first -------- */
       try {
         const parsed = JSON5.parse(`(${arraySlice})`)
         if (!Array.isArray(parsed)) throw new Error("Export is not an array")
-        setData(parsed)
+        setRows(parsed.map((v) => ({ id: nextIdRef.current++, value: v })))
         setQuotedKeys(/"\w+"\s*:/.test(arraySlice))
         setError("")
         return true
@@ -106,7 +137,7 @@ export default function FileContentEditor() {
       /* -------- fallback: safeEval -------- */
       const evaluated = safeEval(arraySlice)
       if (!Array.isArray(evaluated)) throw new Error("Export is not an array")
-      setData(evaluated)
+      setRows(evaluated.map((v) => ({ id: nextIdRef.current++, value: v })))
       setQuotedKeys(/"\w+"\s*:/.test(arraySlice))
       setError("")
       return true
@@ -138,27 +169,30 @@ export default function FileContentEditor() {
   /* -------- DATA MUTATION HELPERS -------- */
 
   const updateNestedValue = (itemIdx: number, path: string[], value: any) =>
-    setData((prev) => {
+    setRows((prev) => {
       const next = structuredClone(prev)
-      let ref: any = next[itemIdx]
+      let ref: any = next[itemIdx].value
       for (let i = 0; i < path.length - 1; i++) ref = ref[path[i]]
       ref[path.at(-1)!] = value
       return next
     })
 
   const addItem = () => {
-    const newIndex = data.length
-    setData((prev) => [...prev, Object.fromEntries(Object.keys(prev[0] ?? {}).map((k) => [k, ""]))])
+    const newIndex = rows.length
+    setRows((prev) => [
+      ...prev,
+      { id: nextIdRef.current++, value: Object.fromEntries(Object.keys(prev[0]?.value ?? {}).map((k) => [k, ""])) },
+    ])
     setNewItemIndex(newIndex)
   }
 
-  const deleteItem = (idx: number) => {
-    setDeletingItems((prev) => new Set(prev).add(idx))
+  const deleteItem = (id: number) => {
+    setDeletingIds((prev) => new Set(prev).add(id))
     setTimeout(() => {
-      setData((prev) => prev.filter((_, i) => i !== idx))
-      setDeletingItems((prev) => {
+      setRows((prev) => prev.filter((row) => row.id !== id))
+      setDeletingIds((prev) => {
         const next = new Set(prev)
-        next.delete(idx)
+        next.delete(id)
         return next
       })
     }, 300) // Match the animation duration
@@ -173,14 +207,21 @@ export default function FileContentEditor() {
       return obj.length ? `[\n${obj.map((v) => nxt + stringify(v, indent + 1)).join(",\n")}\n${sp}]` : "[]"
     if (obj && typeof obj === "object")
       return `{\n${Object.entries(obj)
-        .map(([k, v]) => `${nxt}${quotedKeys ? `"${k}"` : k}: ${stringify(v, indent + 1)}`)
+        .map(([k, v]) => `${nxt}${stringifyKey(k)}: ${stringify(v, indent + 1)}`)
         .join(",\n")}\n${sp}}`
-    return typeof obj === "string" ? `"${obj}"` : String(obj)
+    return typeof obj === "string" ? JSON.stringify(obj) : String(obj)
   }
 
+  /** Quote keys when the file used quoted keys, or when the key isn't a valid identifier */
+  const stringifyKey = (key: string) =>
+    quotedKeys || !/^[A-Za-z_$][A-Za-z0-9_$]*$/.test(key) ? JSON.stringify(key) : key
+
   const downloadFile = () => {
-    const content =
-      (originalImports ? originalImports + "\n\n" : "") + `export const ${exportName} = ${stringify(data)};\n`
+    /* splice the edited array into its original position, keeping the rest of the file verbatim */
+    const items = rows.map((row) => row.value)
+    const content = arrayRange
+      ? originalSource.slice(0, arrayRange[0]) + stringify(items) + originalSource.slice(arrayRange[1])
+      : `export const ${exportName} = ${stringify(items)};\n`
     const blob = new Blob([content], { type: "text/typescript" })
     const url = URL.createObjectURL(blob)
     const a = document.createElement("a")
@@ -247,6 +288,15 @@ export default function FileContentEditor() {
           </CollapsibleContent>
         </Collapsible>
       )
+    if (typeof val === "boolean")
+      return (
+        <div className="flex items-center gap-2 py-1">
+          <Switch checked={val} onCheckedChange={(checked: boolean) => updateNestedValue(itemIdx, path, checked)} />
+          <span className="text-xs text-muted-foreground">{String(val)}</span>
+        </div>
+      )
+    if (typeof val === "number")
+      return <NumberField value={val} onCommit={(n) => updateNestedValue(itemIdx, path, n)} />
     return (
       <div className="space-y-1">
         {String(val).length > 50 ? (
@@ -282,7 +332,7 @@ export default function FileContentEditor() {
 
       setNewItemIndex(null)
     }
-  }, [newItemIndex, data])
+  }, [newItemIndex, rows])
 
   if (!isLoaded)
     return (
@@ -383,7 +433,7 @@ export default function FileContentEditor() {
                   <FileText className="w-5 h-5 text-blue-500" /> {originalFileName}
                 </CardTitle>
                 <CardDescription>
-                  {data.length} item{data.length !== 1 && "s"} • export name: {exportName}
+                  {rows.length} item{rows.length !== 1 && "s"} • export name: {exportName}
                 </CardDescription>
               </div>
               <Button className="bg-violet-800 hover:bg-violet-600" size="sm" onClick={downloadFile}>
@@ -402,15 +452,17 @@ export default function FileContentEditor() {
             </div>
           </CardHeader>
           <CardContent className="space-y-4">
-            {data.map((item, idx) => (
+            {rows.map((row, idx) => (
               <Card
                 className={`shadow-md transition-all duration-300 ${
-                  deletingItems.has(idx)
+                  deletingIds.has(row.id)
                     ? "opacity-0 scale-95 transform -translate-y-2"
                     : "opacity-100 scale-100 transform translate-y-0"
                 }`}
-                key={idx}
-                ref={(el) => (itemRefs.current[idx] = el)}
+                key={row.id}
+                ref={(el) => {
+                  itemRefs.current[idx] = el
+                }}
               >
                 <CardHeader className="flex flex-row items-center justify-between shadow-none p-3 space-y-0 bg-gray-200 rounded-t-md">
                   <span className="text-sm font-medium">Item {idx + 1}</span>
@@ -418,16 +470,16 @@ export default function FileContentEditor() {
                     size="sm"
                     variant="ghost"
                     className="text-destructive hover:bg-red-200 hover:text-destructive transition-all duration-200 hover:scale-110 active:scale-95"
-                    onClick={() => deleteItem(idx)}
-                    disabled={deletingItems.has(idx)}
+                    onClick={() => deleteItem(row.id)}
+                    disabled={deletingIds.has(row.id)}
                   >
                     <Trash2
-                      className={`w-4 h-4 transition-transform duration-200 ${deletingItems.has(idx) ? "animate-pulse" : ""}`}
+                      className={`w-4 h-4 transition-transform duration-200 ${deletingIds.has(row.id) ? "animate-pulse" : ""}`}
                     />
                   </Button>
                 </CardHeader>
                 <CardContent className="space-y-2 shadow-none">
-                  {Object.entries(item).map(([k, v]) => (
+                  {Object.entries(row.value).map(([k, v]) => (
                     <div key={k} className="space-y-1">
                       <Label className="text-xs">{k}</Label>
                       {renderField(v, [k], idx)}
