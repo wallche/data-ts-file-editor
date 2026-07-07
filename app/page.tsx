@@ -446,8 +446,17 @@ export default function FileContentEditor() {
                   className="text-blue-600 hover:text-blue-800 underline transition-colors"
                 >
                  Milena P.
-                </a>{" "}              
-                 and styled with tailwind classes. Some things may not work but it is what it is... I'm just an amateur and this an experiment. Suggestions and improvements are welcome → use the feedback form on the right edge of the screen. Thanks!
+                </a>{" "}
+                 with fixes contributed by{" "}
+                <a
+                  href="https://claude.com/claude-code"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:text-blue-800 underline transition-colors"
+                >
+                 Claude
+                </a>
+                 , and styled with tailwind classes. Some things may not work but it is what it is... I'm just an amateur and this an experiment. Suggestions and improvements are welcome → use the feedback form on the right edge of the screen. Thanks!
               </p>
             </div>
           </footer>
@@ -549,8 +558,17 @@ export default function FileContentEditor() {
               className="text-blue-600 hover:text-blue-800 underline transition-colors"
             >
               Milena P.
-            </a>{" "}              
-              and styled with tailwind classes. Some things may not work but it is what it is... I'm just an amateur and this an experiment. Suggestions and improvements are welcome → use the feedback form on the right edge of the screen. Thanks!
+            </a>{" "}
+              with fixes contributed by{" "}
+            <a
+              href="https://claude.com/claude-code"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:text-blue-800 underline transition-colors"
+            >
+              Claude
+            </a>
+              , and styled with tailwind classes. Some things may not work but it is what it is... I'm just an amateur and this an experiment. Suggestions and improvements are welcome → use the feedback form on the right edge of the screen. Thanks!
           </p>
         </div>
       </footer>
